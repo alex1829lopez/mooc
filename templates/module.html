@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>{{ module.title }}</h2>
+
+<iframe
+width="800"
+height="450"
+src="https://www.youtube.com/embed/{{ session.video_url.split('v=')[1] }}"
+allowfullscreen>
+</iframe>
+
+<form method="POST">
+
+{% for q in module.quiz %}
+
+<h3>{{ q.question }}</h3>
+
+{% for option in q.options %}
+
+<input
+type="radio"
+name="q{{ loop.parent.index0 }}"
+value="{{ option }}"
+required>
+
+{{ option }}
+<br>
+
+{% endfor %}
+
+{% endfor %}
+
+<button>
+Enviar
+</button>
+
+</form>
+
+</body>
+</html>
